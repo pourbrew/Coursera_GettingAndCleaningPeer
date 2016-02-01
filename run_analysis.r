@@ -67,3 +67,5 @@ r1 == r2
 setkey(dt, subject, activity, featDomain, featAcceleration, featInstrument, featJerk, featMagnitude, featVariable, featAxis)
 dtTidy <- dt[, list(count = .N, average = mean(value)), by=key(dt)]
 memisc::codebook(dtTidy)
+f <- file.path(path, "tidy.txt")
+write.table(dtTidy, f, quote=FALSE, sep="\t", row.names=FALSE)
