@@ -252,11 +252,21 @@ setkey(dt, subject, activity, featDomain, featAcceleration, featInstrument, feat
 dtTidy <- dt[, list(count = .N, average = mean(value)), by=key(dt)]
 ```
 
+Create tidy.txt.
+----------------
+```{r}
+f <- file.path(path, "tidy.txt")
+write.table(dtTidy, f, quote=FALSE, sep="\t", row.names=FALSE)
+```
+
 Make codebook.
+--------------
 
 ```{r}
 memisc::codebook(dtTidy)
 ```
+
+
 subject
 
 ----------------------------------------------------------------------------------------------------------------------------
